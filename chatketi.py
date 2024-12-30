@@ -35,13 +35,3 @@ class ChatKeti:
 
     def get_response(self, query):
         return self.qa_chain.invoke({"query": query})
-
-# if __name__ == "__main__":
-#     chatketi = ChatKeti()
-#     while True:
-#         query = input("Enter your question: ")
-#         if query == "/exit":
-#             break
-#         response = chatketi.get_response(query)
-#         print("Response:")
-#         print(response["result"])
