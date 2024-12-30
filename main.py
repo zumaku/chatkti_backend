@@ -1,10 +1,19 @@
-import os
-from dotenv import load_dotenv
-from langchain_community.document_loaders import UnstructuredFileLoader
-from langchain_text_splitters import CharacterTextSplitter
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.vectorstores import Chroma
-from langchain_groq import ChatGroq
-from langchain.chains import RetrievalQA
+from typing import Union
+from fastapi import FastAPI
+from pydantic import BaseModel
+from chatketi import ChatKeti
 
-load_dotenv()
+app = FastAPI()
+chatketi_instance = ChatKeti()
+
+class QueryModel(BaseModel):
+    query: str
+
+@app.get("/")
+def read_root():
+    return {"message": "Redirect!"}
+
+@app.post("/query")
+def get_chatketi_response(query_model: QueryModel):
+    response = chatketi_instance.get_response(query_model.query)
+    return response
