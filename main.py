@@ -1,11 +1,11 @@
 from typing import Union
 from fastapi import FastAPI
 from pydantic import BaseModel
-from chatketi import ChatKeti
+from chatkti import ChatKTI
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
-chatketi_instance = ChatKeti()
+chatkti = ChatKTI()
 
 class QueryModel(BaseModel):
     query: str
@@ -21,9 +21,9 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return {"message": "Redirect!"}
+    return {"message": "ChatKTI is running!"}
 
 @app.post("/query")
-def get_chatketi_response(query_model: QueryModel):
-    response = chatketi_instance.get_response(query_model.query)
+def get_chatkti_response(query_model: QueryModel):
+    response = chatkti.get_response(query_model.query)
     return response

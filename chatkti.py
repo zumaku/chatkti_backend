@@ -7,7 +7,7 @@ from langchain.chains import RetrievalQA
 
 load_dotenv()
 
-class ChatKeti:
+class ChatKTI:
     def __init__(self):
         # Make the embedding
         embeddings = HuggingFaceEmbeddings()
@@ -24,6 +24,7 @@ class ChatKeti:
 
         # LLM
         llm = ChatGroq(model="llama-3.1-70b-versatile")
+        # llm = ChatGroq(model="llama3-8b-8192")
 
         # Create a chain
         self.qa_chain = RetrievalQA.from_chain_type(
