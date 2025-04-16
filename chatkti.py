@@ -23,8 +23,7 @@ class ChatKTI:
         retriever = vectordb.as_retriever()
 
         # LLM
-        llm = ChatGroq(model="llama-3.1-70b-versatile")
-        # llm = ChatGroq(model="llama3-8b-8192")
+        llm = ChatGroq(model="llama-3.3-70b-versatile")
 
         # Create a chain
         self.qa_chain = RetrievalQA.from_chain_type(
